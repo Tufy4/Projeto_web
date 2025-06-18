@@ -1,0 +1,194 @@
+
+
+.fs-2.fw-bold {
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+
+.mb-0 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+form {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.search-container {
+    display: flex;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid #e9ecef;
+}
+
+.search-container:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    border-color: #dee2e6;
+}
+
+
+
+input.texto{
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    background: white;
+    color: #333;	
+     border-radius:30px;
+    
+}
+
+input.texto::placeholder {
+    color: #aaa;
+    font-weight: 200;
+   
+}
+
+input.texto:focus {
+    background: white;
+}
+
+input[type="submit"] {
+    background: #fff3e1;
+    border: none;
+    padding: 1rem 2rem;
+    color: black;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius:30px;
+}
+
+input[type="submit"]:hover {
+    background: #ffffff;
+    transform: scale(1.02);
+}
+
+input[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+input[type="submit"]:focus {
+    box-shadow: 0 0 0 3px rgba(108, 117, 125, 0.3);
+}
+
+
+ 
+
+    header {
+      background: linear-gradient(135deg, #F98C07 0%, #E88C01 100%);
+      color: white;
+    }
+
+    header a.btn-primary {
+      background-color: #ffc107;
+      border-color: #ffc107;
+      color: #212529;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    header a.btn-primary:hover {
+      background-color: #e0a800;
+      color: #212529;
+    }
+
+    
+    #funcionalidades .card {
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(253, 126, 20, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #funcionalidades .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 40px rgba(253, 126, 20, 0.3);
+    }
+
+  
+    #desenvolvedores .card {
+      border-radius: 1rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    #desenvolvedores .card:hover {
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    #desenvolvedores img {
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+
+ 
+    footer {
+      background-color: #212529;
+      color: #adb5bd;
+    }
+
+    footer a:hover {
+      color: #ffc107;
+      text-decoration: none;
+    }
+
+
+    .btn-topo {
+      background-color: #fd7e14;
+      color: white;
+      font-weight: 700;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(253, 126, 20, 0.4);
+      transition: background-color 0.3s ease;
+      line-height: 44px;
+      text-align: center;
+    }
+
+    .btn-topo:hover {
+      background-color: #b85f0a;
+      color: white;
+      text-decoration: none;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .fs-2.fw-bold {
+        font-size: 2rem;
+    }
+    
+    .search-container {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+    
+    input[type="submit"] {
+        border-radius: 0;
+        text-align: center;
+    }
+}
