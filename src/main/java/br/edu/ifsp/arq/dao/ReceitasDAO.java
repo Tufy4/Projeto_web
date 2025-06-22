@@ -37,7 +37,7 @@ public class ReceitasDAO {
 		Gson gson = new Gson();
 		
 		try {
-			FileWriter fw = new FileWriter("/home/aluno/Downloads/saidaReceita.json", StandardCharsets.UTF_8, true);
+			FileWriter fw = new FileWriter("/home/miguel/Downloads/saidaReceita.json", StandardCharsets.UTF_8, true);
 			PrintWriter pw = new PrintWriter(fw);
 			String json = gson.toJson(t);
 			pw.println(json);
@@ -74,7 +74,7 @@ public class ReceitasDAO {
 	
 	
 	public ArrayList<Receita> getListaReceitas() {
-	    File f = new File("/home/aluno/Downloads/saidaReceita.json");
+	    File f = new File("/home/miguel/Downloads/saidaReceita.json");
 	    Gson gson = new Gson();
 	    ArrayList<Receita> lista = new ArrayList<>();
 
@@ -161,7 +161,7 @@ public class ReceitasDAO {
 	
 	public boolean salvarListaReceitas(ArrayList<Receita> lista) {
 	    Gson gson = new Gson();
-	    try (FileWriter fw = new FileWriter("/home/aluno/Downloads/saidaReceita.json", StandardCharsets.UTF_8);
+	    try (FileWriter fw = new FileWriter("/home/miguel/Downloads/saidaReceita.json", StandardCharsets.UTF_8);
 	         PrintWriter pw = new PrintWriter(fw)) {
 	        for (Receita r : lista) {
 	            String json = gson.toJson(r);

@@ -25,7 +25,7 @@ public class UsuarioDAO {
 
     public boolean adicionarUsuarios(Usuario t) {
         Gson gson = new Gson();
-        try (FileWriter fw = new FileWriter("/home/aluno/Downloads/saidaUsuario.json", StandardCharsets.UTF_8, true);
+        try (FileWriter fw = new FileWriter("/home/miguel/Downloads/saidaUsuario.json", StandardCharsets.UTF_8, true);
              PrintWriter pw = new PrintWriter(fw)) {
             String json = gson.toJson(t);
             pw.println(json);
@@ -37,7 +37,7 @@ public class UsuarioDAO {
     }
 
     public ArrayList<Usuario> getUsuarios() {
-        File f = new File("/home/aluno/Downloads/saidaUsuario.json");
+        File f = new File("/home/miguel/Downloads/saidaUsuario.json");
         ArrayList<Usuario> lista = new ArrayList<>();
         try (Scanner sc = new Scanner(new FileReader(f))) {
             Gson gson = new Gson();
