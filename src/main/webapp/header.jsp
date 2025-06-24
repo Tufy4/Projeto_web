@@ -74,7 +74,7 @@ main {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="index.jsp">Home</a>
+                    <a class="nav-link text-white" href="index.html">Home</a>
                 </li>
               
                 <li class="nav-item">
@@ -92,7 +92,7 @@ main {
 					    
 					%>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="CadastrarReceitas.jsp">Cadastrar</a>
+                    <a class="nav-link text-white" href="CadastrarReceitas.html">Cadastrar</a>
                 </li>
                  <% } %>
                  

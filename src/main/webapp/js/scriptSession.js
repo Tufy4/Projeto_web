@@ -9,7 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
 					 Login.style.display = "none";
             }else{
 				let SairSession = document.getElementById("SairSession");
-				SairSession.style.display="none";
+				let cadastrarReceita = document.getElementById("CadastrarReceita");
+				console.log(cadastrarReceita,SairSession);
+
+				
 			}
         });
 });
