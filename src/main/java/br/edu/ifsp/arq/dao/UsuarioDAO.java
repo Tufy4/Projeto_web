@@ -23,9 +23,15 @@ public class UsuarioDAO {
         return instance;
     }
 
+    
+    private String getCaminhoArquivo() {
+        String userHome = System.getProperty("user.home");
+        return userHome + File.separator + "Downloads" + File.separator + "saidaUsuario.json";
+    }
+
     public boolean adicionarUsuarios(Usuario t) {
         Gson gson = new Gson();
-        try (FileWriter fw = new FileWriter("/home/miguel/Downloads/saidaUsuario.json", StandardCharsets.UTF_8, true);
+        try (FileWriter fw = new FileWriter(getCaminhoArquivo(), StandardCharsets.UTF_8, true);
              PrintWriter pw = new PrintWriter(fw)) {
             String json = gson.toJson(t);
             pw.println(json);
@@ -37,8 +43,13 @@ public class UsuarioDAO {
     }
 
     public ArrayList<Usuario> getUsuarios() {
-        File f = new File("/home/miguel/Downloads/saidaUsuario.json");
+        File f = new File(getCaminhoArquivo());
         ArrayList<Usuario> lista = new ArrayList<>();
+
+        if (!f.exists()) {
+            return lista;
+        }
+
         try (Scanner sc = new Scanner(new FileReader(f))) {
             Gson gson = new Gson();
             while (sc.hasNextLine()) {
@@ -50,11 +61,9 @@ public class UsuarioDAO {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return lista; // Retorna lista vazia em caso de erro
         }
         return lista;
     }
-
 
     public int FazerLogin(Usuario newUser) {
         int situacao = -1;
@@ -80,5 +89,4 @@ public class UsuarioDAO {
         }
         return false;
     }
-
 }

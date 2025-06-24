@@ -1,6 +1,7 @@
 package br.edu.ifsp.arq.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,9 +39,29 @@ public class CreateUsuarioServlet extends HttpServlet {
 		        request.getRequestDispatcher("/login.jsp").forward(request, response);
 		    } else {
 		        msg = "Usuário já existe!";
-		        request.setAttribute("mensagem", msg);
-		        getServletContext().getRequestDispatcher("/CadastrarUsuario.jsp").forward(request, response);
+		       getServletContext().setAttribute("mensagem", msg);
+		        getServletContext().getRequestDispatcher("/CadastrarUsuario.html").forward(request, response);
 		    }
+		}
+	 
+	 
+	 
+	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 response.setContentType("application/json");
+	        response.setCharacterEncoding("UTF-8");
+	        
+	        String mensagem =  (String) getServletContext().getAttribute("mensagem");
+	        getServletContext().removeAttribute("mensagem");
+	        
+	        System.out.println(mensagem);
+	        Gson gson = new Gson(); 
+	        String json = gson.toJson(mensagem);
+
+	        PrintWriter out = response.getWriter();
+	        out.print(json);
+	        out.flush();
+	       
+		    
 		}
 
 }

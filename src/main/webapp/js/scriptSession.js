@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }else{
 				let SairSession = document.getElementById("SairSession");
 				let cadastrarReceita = document.getElementById("CadastrarReceita");
-				console.log(cadastrarReceita,SairSession);
+				cadastrarReceita.style.display = "none";
+				SairSession.style.display = "none";
+				
 
 				
 			}

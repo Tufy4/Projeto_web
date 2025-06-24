@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import br.edu.ifsp.arq.dao.UsuarioDAO;
 import br.edu.ifsp.arq.model.Usuario;
 @WebServlet("/Login")
@@ -25,9 +27,23 @@ public class LoginServlet extends HttpServlet {
 		dao = UsuarioDAO.getInstance();	
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		response.setContentType("application/json");
+    	response.setCharacterEncoding("UTF-8");
+    
+    	String mensagem =  (String) getServletContext().getAttribute("mensagem");
+    	getServletContext().removeAttribute("mensagem");
+    
+    	System.out.println(mensagem);
+    	Gson gson = new Gson(); 
+    	String json = gson.toJson(mensagem);
+
+    	PrintWriter out = response.getWriter();
+    	out.print(json);
+    	out.flush();
+   
+    
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -38,21 +54,21 @@ public class LoginServlet extends HttpServlet {
 
 		if (usuario.isEmpty() || senha.isEmpty()) {
 			msg = "Tem que preencher o campo de usuario e senha";	
-			request.setAttribute("mensagem", msg);
-			getServletContext().getRequestDispatcher("/login.html").forward(request, response);
+			  getServletContext().setAttribute("mensagem", msg);
+			  getServletContext().getRequestDispatcher("/login.html").forward(request, response);
 		} else {
 			Usuario t = new Usuario(usuario, senha);
 			retorno = dao.FazerLogin(t);
 
 			if (retorno == -1) {
 				msg = "Não há usuários cadastrados";
-				request.setAttribute("mensagem", msg);
-				getServletContext().getRequestDispatcher("/login.html").forward(request, response);
+				  getServletContext().setAttribute("mensagem", msg);
+				  getServletContext().getRequestDispatcher("/login.html").forward(request, response);
 			} else if (retorno == 0) {
 				msg = "Senha ou Login incorretos";
 				System.out.println(msg);
-				request.setAttribute("mensagem", msg);
-				getServletContext().getRequestDispatcher("/login.html").forward(request, response);
+				  getServletContext().setAttribute("mensagem", msg);
+				  getServletContext().getRequestDispatcher("/login.html").forward(request, response);
 			} else {
 				
 				System.out.println("Logado com sucesso");
