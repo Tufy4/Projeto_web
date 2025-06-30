@@ -1,16 +1,35 @@
-document.addEventListener("DOMContentLoaded", () => {
+
+async function ehLogado() {
+    const response = await fetch("/Projeto-Receitas/SessionJsonServlet");
+    const usuario = await response.json();
+    return usuario != null;
+}
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const logado = await ehLogado();
+
     fetch("/Projeto-Receitas/ReceitasJsonServlet")
         .then(response => response.json())
         .then(receitas => {
             const container = document.getElementById("receitas-container");
 
             if (!receitas.length) {
-                container.innerHTML = `<div class="alert alert-warning" role="alert">Não há receitas cadastradas.</div>`;
+                container.innerHTML = `
+                    <div class="alert alert-warning" role="alert">
+                        Não há receitas cadastradas.
+                    </div>`;
                 return;
             }
 
             receitas.forEach(receita => {
-                console.log(receita.fotoPath); // ou receita.fotoCaminho, conforme o JSON
+                let botoes = "";
+
+                if (logado) {
+                    botoes = `
+                        <a href="/Projeto-Receitas/UpdateReceitaServlet?id=${receita.id}" class="btn btn-sm btn-dark">Editar</a>
+                        <a href="/Projeto-Receitas/DeleteReceitaServlet?id=${receita.id}" class="btn btn-sm btn-danger">Deletar</a>`;
+                }
 
                 const card = `
                 <div class="col">
@@ -27,18 +46,19 @@ document.addEventListener("DOMContentLoaded", () => {
                             </p>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
-                            <a href="/Projeto-Receitas/UpdateReceitaServlet?id=${receita.id}" class="btn btn-sm btn-dark">Editar</a>
-                            <a href="/Projeto-Receitas/DeleteReceitaServlet?id=${receita.id}" class="btn btn-sm btn-danger">Deletar</a>
+                            ${botoes}
                         </div>
                     </div>
                 </div>`;
-                
+
                 container.insertAdjacentHTML("beforeend", card);
             });
         })
         .catch(error => {
             console.error("Erro ao buscar receitas:", error);
             document.getElementById("receitas-container").innerHTML = `
-                <div class="alert alert-danger" role="alert">Erro ao carregar receitas.</div>`;
+                <div class="alert alert-danger" role="alert">
+                    Erro ao carregar receitas.
+                </div>`;
         });
 });

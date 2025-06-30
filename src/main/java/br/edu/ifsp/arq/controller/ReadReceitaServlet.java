@@ -22,11 +22,8 @@ public class ReadReceitaServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ArrayList<Receita> listaReceitas = dao.getListaReceitas();
-        
-        request.setAttribute("listaReceitas", listaReceitas);
 
-        request.getRequestDispatcher("/lista-receitas.jsp").forward(request, response);
+        request.getRequestDispatcher("/lista-receitas.html").forward(request, response);
        
     }
 }
