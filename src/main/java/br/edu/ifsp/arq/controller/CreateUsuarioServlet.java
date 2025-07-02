@@ -36,7 +36,7 @@ public class CreateUsuarioServlet extends HttpServlet {
 		    if (dao.ExisteUsuario(nomeUsuario,password)==false) {
 		        Usuario newUser = new Usuario(nomeUsuario, password);
 		        dao.adicionarUsuarios(newUser);
-		        request.getRequestDispatcher("/login.jsp").forward(request, response);
+		        request.getRequestDispatcher("/login.html").forward(request, response);
 		    } else {
 		        msg = "Usuário já existe!";
 		       getServletContext().setAttribute("mensagem", msg);

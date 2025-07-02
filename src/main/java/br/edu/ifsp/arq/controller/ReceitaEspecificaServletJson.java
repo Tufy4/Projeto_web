@@ -16,22 +16,24 @@ import br.edu.ifsp.arq.dao.ReceitasDAO;
 	import br.edu.ifsp.arq.model.Receita;
 	
 	
-	@WebServlet("/Receita")
-	public class ReceitaEspecificaServlet extends HttpServlet {
+	@WebServlet("/ReceitaJson")
+	public class ReceitaEspecificaServletJson extends HttpServlet {
 		private static final long serialVersionUID = 1L;
 		private ReceitasDAO dao = ReceitasDAO.getInstance();	
 		
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
+			Receita ReceitaEscolhida = (Receita) getServletContext().getAttribute("Receita");
 			
-			String Id = request.getParameter("id");
-			Receita ReceitaEscolhida = dao.getReceita(Id);
-			getServletContext().setAttribute("Receita", ReceitaEscolhida);
-			
-			
-			 request.getRequestDispatcher("/ReceitaEspecifica.html").forward(request, response);
+			response.setContentType("application/json");
+	        response.setCharacterEncoding("UTF-8");
+	        
+	        Gson gson = new Gson(); 
+	        String json = gson.toJson(ReceitaEscolhida);
 
-			
+	        PrintWriter out = response.getWriter();
+	        out.print(json);
+	        out.flush();
 		}
 	
 		
