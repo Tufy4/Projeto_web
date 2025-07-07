@@ -46,12 +46,9 @@ public class CreateReceitaServlet extends HttpServlet {
         String filePath = uploadPath + File.separator + fileName;
         fotoPart.write(filePath);
 
-        Receita receita = new Receita(id, nomeReceita, autor, tempoPreparo, ingredientes, modoPreparo, categoria, avaliacao);
+        Receita receita = new Receita(dao.lastId(), nomeReceita, autor, tempoPreparo, ingredientes, modoPreparo, categoria, avaliacao);
         receita.setFotoPath("uploads/" + fileName);
         dao.adicionarReceitas(receita);
-        
-        id++;
-
         response.sendRedirect("ReadReceitaServlet");
     }
 }

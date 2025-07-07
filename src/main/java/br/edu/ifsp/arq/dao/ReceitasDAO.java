@@ -154,4 +154,16 @@ public class ReceitasDAO {
             return false;
         }
     }
+    
+    
+    
+    public int lastId() {
+    	ArrayList<Receita> receitas = getListaReceitas();
+    	if(!receitas.isEmpty()) {
+    		return receitas.getLast().getId()+1;
+    	}
+    	else {
+    		return 1;
+    	}
+    }
 }

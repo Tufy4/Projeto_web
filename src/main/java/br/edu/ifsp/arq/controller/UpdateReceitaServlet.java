@@ -38,8 +38,8 @@ public class UpdateReceitaServlet extends HttpServlet {
         }
 
         if (receitaSelecionada != null) {
-            request.setAttribute("receitaSelecionada", receitaSelecionada);
-            request.getRequestDispatcher("UpdateLista.jsp").forward(request, response);
+        	getServletContext().setAttribute("Receita", receitaSelecionada);
+        	getServletContext().getRequestDispatcher("/UpdateLista.html").forward(request, response);
         } else {
             response.sendRedirect("ReadReceitaServlet"); // caso não encontre a receita
         }
