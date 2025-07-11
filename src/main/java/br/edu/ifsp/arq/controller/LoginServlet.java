@@ -67,8 +67,8 @@ public class LoginServlet extends HttpServlet {
 		            System.out.println("Logado com sucesso");
 
 		            HttpSession session = request.getSession(); 
-		            session.setAttribute("usuario", user.getUsuario()); 
-		            session.setAttribute("usuarioNome", user.getUsuario()); 
+		            session.setAttribute("usuario", user); 
+	
 
 		            System.out.println("Sessão criada: " + session.getId());
 

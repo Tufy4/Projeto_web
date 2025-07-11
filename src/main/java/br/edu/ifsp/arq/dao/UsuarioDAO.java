@@ -83,7 +83,7 @@
 	
 	    public boolean ExisteUsuario(String user, String password) {
 	        for (Usuario u : getUsuarios()) {
-	            if (u != null && u.getUsuario().equals(user) && u.getSenha().equals(password)) {
+	            if (u != null && u.getUsuario().equals(user)) {
 	                return true;
 	            }
 	        }
