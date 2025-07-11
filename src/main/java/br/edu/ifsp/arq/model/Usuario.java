@@ -8,6 +8,7 @@ public class Usuario implements Serializable{
 	
 	public String Usuario;
 	private String Senha;
+	private String tipoUsuario; 
 	private static int proximo_id = 0;
 	private int id;
 	
@@ -15,10 +16,11 @@ public class Usuario implements Serializable{
 		this.id = ++proximo_id;
 	}
 	
-	public Usuario(String Usuario, String Senha) {
+	public Usuario(String Usuario, String Senha, String tipoUsuario) {
 		this();
 		this.Usuario = Usuario;
 		this.Senha = Senha;
+		this.tipoUsuario = tipoUsuario;
 	}
 	
 	public int getId() {
@@ -39,6 +41,14 @@ public class Usuario implements Serializable{
 
 	public void setSenha(String senha) {
 		Senha = senha;
+	}
+	
+	public String getTipoUsuario() {
+		return tipoUsuario; 
+	}
+	   
+	public void setTipoUsuario(String tipoUsuario) { 
+		this.tipoUsuario = tipoUsuario; 
 	}
 	
 	

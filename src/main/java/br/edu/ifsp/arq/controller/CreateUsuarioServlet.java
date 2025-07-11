@@ -32,9 +32,10 @@ public class CreateUsuarioServlet extends HttpServlet {
 
 		    String nomeUsuario = request.getParameter("nome");
 		    String password = request.getParameter("password");
+		    String tipoUsuario = request.getParameter("tipo"); 
 
 		    if (dao.ExisteUsuario(nomeUsuario,password)==false) {
-		        Usuario newUser = new Usuario(nomeUsuario, password);
+		        Usuario newUser = new Usuario(nomeUsuario, password,tipoUsuario);
 		        dao.adicionarUsuarios(newUser);
 		        request.getRequestDispatcher("/login.html").forward(request, response);
 		    } else {

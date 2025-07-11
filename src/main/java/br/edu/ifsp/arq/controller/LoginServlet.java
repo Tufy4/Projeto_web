@@ -52,37 +52,28 @@ public class LoginServlet extends HttpServlet {
 		String usuario = request.getParameter("usuario");
 		String senha = request.getParameter("senha");
 
-		if (usuario.isEmpty() || senha.isEmpty()) {
-			msg = "Tem que preencher o campo de usuario e senha";	
-			  getServletContext().setAttribute("mensagem", msg);
-			  getServletContext().getRequestDispatcher("/login.html").forward(request, response);
-		} else {
-			Usuario t = new Usuario(usuario, senha);
-			retorno = dao.FazerLogin(t);
+		 if (usuario.isEmpty() || senha.isEmpty()) {
+		        msg = "Tem que preencher o campo de usuario e senha";	
+		        getServletContext().setAttribute("mensagem", msg);
+		        getServletContext().getRequestDispatcher("/login.html").forward(request, response);
+		    } else {
+		        if (!dao.ExisteUsuario(usuario, senha)) {
+		            msg = dao.getUsuarios().isEmpty() ? "Não há usuários cadastrados" : "Senha ou login incorretos";
+		            getServletContext().setAttribute("mensagem", msg);
+		            getServletContext().getRequestDispatcher("/login.html").forward(request, response);
+		        } else {
+		            Usuario user = dao.getUsuarioPorCredenciais(usuario, senha);
 
-			if (retorno == -1) {
-				msg = "Não há usuários cadastrados";
-				  getServletContext().setAttribute("mensagem", msg);
-				  getServletContext().getRequestDispatcher("/login.html").forward(request, response);
-			} else if (retorno == 0) {
-				msg = "Senha ou Login incorretos";
-				System.out.println(msg);
-				  getServletContext().setAttribute("mensagem", msg);
-				  getServletContext().getRequestDispatcher("/login.html").forward(request, response);
-			} else {
-				
-				System.out.println("Logado com sucesso");
-				
-				
-				HttpSession session = request.getSession(); 
-				session.setAttribute("usuario", t); 
-				session.setAttribute("usuarioNome", usuario); 
+		            System.out.println("Logado com sucesso");
 
-				System.out.println("Sessão criada: " + session.getId(	));
-				
-			
-				getServletContext().getRequestDispatcher("/index.html").forward(request, response);
-			}
+		            HttpSession session = request.getSession(); 
+		            session.setAttribute("usuario", user.getUsuario()); 
+		            session.setAttribute("usuarioNome", user.getUsuario()); 
+
+		            System.out.println("Sessão criada: " + session.getId());
+
+		            getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+		        }
+		    }
 		}
 	}
-}
