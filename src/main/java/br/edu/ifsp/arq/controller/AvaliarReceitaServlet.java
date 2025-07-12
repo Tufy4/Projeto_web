@@ -54,18 +54,15 @@ public class AvaliarReceitaServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
+    	String receitaId = request.getParameter("receitaId");
 
-        int receitaId = Integer.parseInt(request.getParameter("receitaId"));
+        if (receitaId == null) {
+            response.sendRedirect("erro.html"); 
+            return;
+        }
 
-        AvaliacaoDAO dao = new AvaliacaoDAO();
-        ArrayList<Avaliacao> avaliacoes = dao.buscarPorReceita(receitaId);
-
-        Gson gson = new Gson();
-        String json = gson.toJson(avaliacoes);
-
-        response.getWriter().write(json);
+        
+        response.sendRedirect("Avaliacao.html?receitaId=" + receitaId);
     }
 
     

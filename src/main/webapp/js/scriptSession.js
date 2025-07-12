@@ -9,20 +9,23 @@ document.addEventListener("DOMContentLoaded", () => {
             let cadastrarReceita = document.getElementById("CadastrarReceita");
 
             
-            if(data != null){
-                Login.style.display = 'none';
-                CadastrarUsuario.style.display = 'none';
-				if (data.tipoUsuario === "comum") {
-				     cadastrarReceita.style.display = 'none';
-				} else {
-				     cadastrarReceita.style.display = 'block';
-				}
+			if (data != null) {
+			    Login.style.display = 'none';
+			    CadastrarUsuario.style.display = 'none';
 
-                
-            } else {
-                SairSession.style.display = 'none';
-                cadastrarReceita.style.display = 'none';
-            }
+			    SairSession.style.display = 'block';
+
+			    if (data.tipoUsuario === "administrador") {
+			        cadastrarReceita.style.display = 'block';
+			    } else {
+			        cadastrarReceita.style.display = 'none';
+			    }
+
+			} else {
+			    SairSession.style.display = 'none';
+			    cadastrarReceita.style.display = 'none';
+			}
+
         })
         .catch(error => {
             console.error("Erro ao verificar sessão:", error);
