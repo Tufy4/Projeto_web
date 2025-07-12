@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 				
 				if(logado && tipoUsuario == "avaliador"){
 					botoes = `
-					     <a href="/Projeto-Receitas/UpdateReceitaServlet?id=${receita.id}" class="btn btn-sm btn-warning">Avaliar</a>
+					     <a href="/Projeto-Receitas/AvaliarReceitaServlet?id=${receita.id}" class="btn btn-sm btn-warning">Avaliar</a>
 					     `;
 				}
 
