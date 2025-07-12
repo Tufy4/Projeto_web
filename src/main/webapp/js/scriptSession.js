@@ -9,18 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
             let cadastrarReceita = document.getElementById("CadastrarReceita");
 
             
-
             if(data != null){
                 Login.style.display = 'none';
                 CadastrarUsuario.style.display = 'none';
-				if(data.tipoUsuario === "comum"){
-					console.log(data.tipoUsuario);
-				}else if(data.tipoUsuario === "avaliador"){
-							console.log(data.tipoUsuario);
-					}
-						else if(data.tipoUsuario === "administrador"){
-								console.log(data.tipoUsuario);
-						}
+				if (data.tipoUsuario === "comum") {
+				     cadastrarReceita.style.display = 'none';
+				} else {
+				     cadastrarReceita.style.display = 'block';
+				}
 
                 
             } else {

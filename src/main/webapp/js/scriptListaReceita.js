@@ -8,6 +8,14 @@ async function ehLogado() {
 
 document.addEventListener("DOMContentLoaded", async () => {
     const logado = await ehLogado();
+	
+	let tipoUsuario = null;
+
+	   if (logado) {
+	       const response = await fetch("/Projeto-Receitas/SessionJsonServlet");
+	       const usuario = await response.json();
+	       tipoUsuario = usuario.tipoUsuario;
+	   }
 
     fetch("/Projeto-Receitas/ReceitasJsonServlet")
         .then(response => response.json())
@@ -25,11 +33,17 @@ document.addEventListener("DOMContentLoaded", async () => {
             receitas.forEach(receita => {
                 let botoes = "";
 
-                if (logado) {
+                if (logado && tipoUsuario == "administrador") {
                     botoes = `
                         <a href="/Projeto-Receitas/UpdateReceitaServlet?id=${receita.id}" class="btn btn-sm btn-dark">Editar</a>
                         <a href="/Projeto-Receitas/DeleteReceitaServlet?id=${receita.id}" class="btn btn-sm btn-danger">Deletar</a>`;
                 }
+				
+				if(logado && tipoUsuario == "avaliador"){
+					botoes = `
+					     <a href="/Projeto-Receitas/UpdateReceitaServlet?id=${receita.id}" class="btn btn-sm btn-warning">Avaliar</a>
+					     `;
+				}
 
                 const card = `
                 <div class="col">
