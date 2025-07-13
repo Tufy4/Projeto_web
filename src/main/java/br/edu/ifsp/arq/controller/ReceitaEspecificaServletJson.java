@@ -24,7 +24,7 @@ import br.edu.ifsp.arq.dao.ReceitasDAO;
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 			Receita ReceitaEscolhida = (Receita) getServletContext().getAttribute("Receita");
-			
+			System.out.println(ReceitaEscolhida.getFotoCaminho());
 			response.setContentType("application/json");
 	        response.setCharacterEncoding("UTF-8");
 	        

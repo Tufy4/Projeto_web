@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     fetch("/Projeto-Receitas/ReceitasJsonServlet")
         .then(response => response.json())
         .then(receitas => {
+			console.log(receitas);
             const container = document.getElementById("receitas-container");
 
             if (!receitas.length) {
@@ -27,8 +28,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             receitas.forEach(receita => {
+				console.log(receita);
+				
                 let botoes = "";
-
+			
                 if (logado && tipoUsuario === "administrador") {
                     botoes = `
                         <a href="/Projeto-Receitas/UpdateReceitaServlet?id=${receita.id}" class="btn btn-sm btn-dark">Editar</a>
@@ -36,8 +39,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
 
                 if (logado && tipoUsuario === "avaliador") {
+					console.log("FOI");
                     botoes = `
-                        <a href="/Projeto-Receitas/AvaliarReceitaServlet?receitaId=${receita.id}" class="btn btn-sm btn-warning">Avaliar</a>`;
+                        <a href="/Projeto-Receitas/Avaliacao.html?receitaId=${receita.id}" class="btn btn-sm btn-warning">Avaliar</a>`;
                 }
 
                 const card = `

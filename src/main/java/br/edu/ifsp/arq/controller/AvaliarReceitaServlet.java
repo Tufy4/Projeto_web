@@ -18,7 +18,7 @@ import br.edu.ifsp.arq.model.Usuario;
 public class AvaliarReceitaServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	 AvaliacaoDAO dao = AvaliacaoDAO.getInstance();
         HttpSession session = request.getSession(false);
         Usuario usuario = (session != null) ? (Usuario) session.getAttribute("usuario") : null;
@@ -41,30 +41,19 @@ public class AvaliarReceitaServlet extends HttpServlet {
             avaliacao.setNota(nota);
             avaliacao.setComentario(comentario);
             avaliacao.setNomeAvaliador(usuario.getUsuario());
+            avaliacao.setReceitaId(receitaId);
 
            
             dao.adicionarAvaliacao(avaliacao);
 
             
-            response.sendRedirect("Receita?receitaId=" + receitaId);
+            response.sendRedirect("Receita?id=" + receitaId);
 
         
     }
     
     
-    
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String receitaId = request.getParameter("receitaId");
-
-        if (receitaId == null) {
-            response.sendRedirect("erro.html"); 
-            return;
-        }
-
-        
-        response.sendRedirect("Avaliacao.html?receitaId=" + receitaId);
-    }
+  
 
     
     
