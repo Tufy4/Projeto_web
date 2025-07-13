@@ -6,6 +6,7 @@ public class Avaliacao {
 	private String nomeAvaliador;
 	private String comentario;
 	private int nota;
+
 	
 	
 	

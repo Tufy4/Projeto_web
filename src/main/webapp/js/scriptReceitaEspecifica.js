@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(receita => {
             const container = document.getElementById("receitas-container");
-
+			console.log(receita);
             
                 const card = `
 				<div class="card shadow-lg mx-auto" style="max-width: 40rem;">

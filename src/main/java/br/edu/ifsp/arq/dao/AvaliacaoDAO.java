@@ -12,13 +12,29 @@ import java.util.Scanner;
 import com.google.gson.Gson;
 
 import br.edu.ifsp.arq.model.Avaliacao;
+import br.edu.ifsp.arq.model.Receita;
 
 public class AvaliacaoDAO {
     private static ArrayList<Avaliacao> listaDeAvaliacoes;
+    private static AvaliacaoDAO instance;
 
+    
+    private AvaliacaoDAO() {
+    	listaDeAvaliacoes = new ArrayList<Avaliacao>();
+    }
+
+    public static AvaliacaoDAO getInstance() {
+        if (instance == null) {
+            instance = new AvaliacaoDAO();
+        }
+        return instance;
+    }
+    
+    
+    
     private String getCaminhoArquivo() {
         String userHome = System.getProperty("user.home");
-        return userHome + File.separator + "Downloads" + File.separator + "avaliacoes.json";
+        return userHome + File.separator + "Downloads" + File.separator + "saidaAvaliacoes.json";
     }
 
     public boolean adicionarAvaliacao(Avaliacao a) {

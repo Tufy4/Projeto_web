@@ -19,6 +19,7 @@ public class AvaliarReceitaServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	 AvaliacaoDAO dao = AvaliacaoDAO.getInstance();
         HttpSession session = request.getSession(false);
         Usuario usuario = (session != null) ? (Usuario) session.getAttribute("usuario") : null;
 
@@ -27,27 +28,27 @@ public class AvaliarReceitaServlet extends HttpServlet {
             return;
         }
 
-        try {
+        
+        	
+        	
             int receitaId = Integer.parseInt(request.getParameter("receitaId"));
             int nota = Integer.parseInt(request.getParameter("nota"));
             String comentario = request.getParameter("comentario");
 
             Avaliacao avaliacao = new Avaliacao();
-            avaliacao.setReceitaId(receitaId);
+            avaliacao.setId(dao.lastId());
+
             avaliacao.setNota(nota);
             avaliacao.setComentario(comentario);
             avaliacao.setNomeAvaliador(usuario.getUsuario());
 
-            AvaliacaoDAO dao = new AvaliacaoDAO();
+           
             dao.adicionarAvaliacao(avaliacao);
 
             
             response.sendRedirect("Receita?receitaId=" + receitaId);
 
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            response.sendRedirect("index.html");
-        }
+        
     }
     
     
