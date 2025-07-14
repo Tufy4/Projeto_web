@@ -1,7 +1,8 @@
 package br.edu.ifsp.arq.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.util.ArrayList;	
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
 
 import br.edu.ifsp.arq.dao.ReceitasDAO;
 import br.edu.ifsp.arq.model.Receita;
@@ -29,11 +32,17 @@ public class PesquisaReceitaServlet extends HttpServlet {
         List<Receita> resultados = todasReceitas.stream()
                 .filter(receita -> receita.getNomeReceita().toLowerCase().contains(busca.toLowerCase()))
                 .collect(Collectors.toList());
+        
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
 
-        request.setAttribute("resultados", resultados);
-        request.setAttribute("busca", busca);
+        Gson gson = new Gson(); 
+        String json = gson.toJson(resultados);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("resposta.jsp");
-        dispatcher.forward(request, response);
+        PrintWriter out = response.getWriter();
+        out.print(json);
+        out.flush();
+
+        
     }
 }
