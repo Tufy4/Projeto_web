@@ -55,26 +55,23 @@ async function Categorias(event){
 								                       <a href="/Projeto-Receitas/Avaliacao.html?receitaId=${receita.id}" class="btn btn-sm btn-warning">Avaliar</a>`;
 								               }
 
-								               const card = `
-								               <div class="col">
-								                   <div class="card h-100">
-								                       <a href="Receita?id=${receita.id}">
-								                           <img src="${receita.fotoCaminho}" class="card-img-top" alt="Foto da receita ${receita.nomeReceita}" style="max-height: 200px; object-fit: cover;">
-								                       </a>
-								                       <div class="card-body">
-								                           <h5 class="card-title">${receita.nomeReceita}</h5>
-								                           <h6 class="card-subtitle mb-2 text-muted">Autor: ${receita.autor}</h6>
-								                           <p class="card-text">
-								                               <strong>Tempo de preparo:</strong> ${receita.tempo}<br>
-								                               <strong>Categoria:</strong> ${receita.categoria}
-								                           </p>
-								                       </div>
-								                       <div class="card-footer d-flex justify-content-between">
-								                           ${botoes}
-								                       </div>
-								                   </div>
-								               </div>`;
-
+											   const card = `
+											            <div class="receita-card">
+											                 <a href="Receita?id=${receita.id}">
+											                     <img src="${receita.fotoCaminho}" alt="Foto da receita ${receita.nomeReceita}">
+											                 </a>
+											           <div class="card-body">
+											                <h5 class="card-title">${receita.nomeReceita}</h5>
+											                <h6 class="card-subtitle">Autor: ${receita.autor}</h6>
+											                <p class="card-text">
+											                      <strong>Tempo de preparo:</strong> ${receita.tempo}<br>
+											                      <strong>Categoria:</strong> ${receita.categoria}
+											                </p>
+											           </div>
+											           <div class="card-footer">
+											                 ${botoes}
+											           </div>
+											           </div>`;
 								               container.insertAdjacentHTML("beforeend", card);
 					}
 					

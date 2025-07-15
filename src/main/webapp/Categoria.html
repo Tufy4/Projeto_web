@@ -10,6 +10,145 @@
 <link>
 	
 <style>
+
+
+
+#Categorias {
+    background-color: #fffaf3;
+    padding: 3rem 1rem;
+    min-height: 500px;
+    text-align: center;
+}
+
+
+.listaCategorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+
+.listaCategorias button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ff9a00, #ff5e62);
+    color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.listaCategorias button:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #ff5e62, #ff9a00);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+
+#receitas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.receita-card {
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.receita-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.receita-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.receita-card .card-body {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.receita-card .card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ff5e62;
+  margin-bottom: 0.5rem;
+}
+
+.receita-card .card-subtitle {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.receita-card .card-text {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.receita-card .card-footer {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #eee;
+  background-color: #fafafa;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.receita-card .btn {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.receita-card .btn-dark:hover {
+  background-color: #1c1c1c;
+}
+
+.receita-card .btn-danger:hover {
+  background-color: #c82333;
+}
+
+.receita-card .btn-warning:hover {
+  background-color: #e0a800;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 body {
     min-height: 100vh;
     display: flex;
