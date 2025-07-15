@@ -15,9 +15,6 @@ async function Categorias(event){
 		
 		   const btnAddReceita = document.getElementById("btn-add-receita");
 
-		   if (usuario && usuario.tipoUsuario === "administrador") {
-		       btnAddReceita.style.display = "inline-block";
-		   }
 
 		   const logado = usuario != null;
 		   const tipoUsuario = usuario?.tipoUsuario || null;
