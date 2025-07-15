@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <h5 class="card-title">${receita.nomeReceita}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Autor: ${receita.autor}</h6>
                                 <p class="card-text">
+									<strong>Modo de preparo:</strong> ${receita.modoPreparo}<br>
                                     <strong>Tempo de preparo:</strong> ${receita.tempo}<br>
                                     <strong>Categoria:</strong> ${receita.categoria}
                                 </p>

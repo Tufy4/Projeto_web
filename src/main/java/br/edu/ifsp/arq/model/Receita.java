@@ -9,13 +9,12 @@ public class Receita {
     public String ingredientes;
     public String modoPreparo;
     public String categoria;
-    public int avaliacao;
     private String fotoCaminho; 
     
 
     // Construtor
     public Receita(int id, String nomeReceita, String autor, String tempo, 
-                   String ingredientes, String modoPreparo, String categoria, int avaliacao) {
+                   String ingredientes, String modoPreparo, String categoria) {
         this.id = id;
         this.nomeReceita = nomeReceita;
         this.autor = autor;
@@ -23,7 +22,6 @@ public class Receita {
         this.ingredientes = ingredientes;
         this.modoPreparo = modoPreparo;
         this.categoria = categoria;
-        this.avaliacao = avaliacao;
     }
 
     // Getters e Setters
@@ -91,13 +89,6 @@ public class Receita {
         this.categoria = categoria;
     }
 
-    public int getAvaliacao() {
-        return avaliacao;
-    }
-
-    public void setAvaliacao(int avaliacao) {
-        this.avaliacao = avaliacao;
-    }
 
     public String getFotoPath() {
         return fotoCaminho;

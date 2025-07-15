@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
 				            <h5 class="card-subtitle text-muted mb-3">Autor: ${receita.autor}</h5>
 
 				            <ul class="list-group list-group-flush">
+							<li class="list-group-item"><strong>Modo de preparo:</strong> ${receita.modoPreparo}</li>
 				                <li class="list-group-item"><strong>Tempo de preparo:</strong> ${receita.tempo} min</li>
 				                <li class="list-group-item"><strong>Categoria:</strong> ${receita.categoria}</li>
-				                <li class="list-group-item"><strong>Avaliação:</strong> ${receita.avaliacao}</li>
 				            </ul>
 				        </div>
 				    </div>`;

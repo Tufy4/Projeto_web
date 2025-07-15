@@ -36,7 +36,6 @@ public class CreateReceitaServlet extends HttpServlet {
         String ingredientes = request.getParameter("ingredientes");
         String modoPreparo = request.getParameter("modoPreparo");
         String categoria = request.getParameter("categoria");
-        int avaliacao = Integer.parseInt(request.getParameter("avaliacao"));
 
         Part fotoPart = request.getPart("foto");
         String fileName = Path.of(fotoPart.getSubmittedFileName()).getFileName().toString();
@@ -46,7 +45,7 @@ public class CreateReceitaServlet extends HttpServlet {
         String filePath = uploadPath + File.separator + fileName;
         fotoPart.write(filePath);
 
-        Receita receita = new Receita(dao.lastId(), nomeReceita, autor, tempoPreparo, ingredientes, modoPreparo, categoria, avaliacao);
+        Receita receita = new Receita(dao.lastId(), nomeReceita, autor, tempoPreparo, ingredientes, modoPreparo, categoria);
         receita.setFotoPath("uploads/" + fileName);
         dao.adicionarReceitas(receita);
         response.sendRedirect("ReadReceitaServlet");
